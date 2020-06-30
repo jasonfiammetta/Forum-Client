@@ -1,6 +1,6 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
-const store = require('./store.js')
+const store = require('./../store.js')
 const getFormFields = require('./../../../lib/get-form-fields.js')
 
 const handleForm = function (event) {
@@ -8,17 +8,16 @@ const handleForm = function (event) {
   return getFormFields(event.target)
 }
 
-const onSignUp = function (data) {
-  console.log(data)
-  api.signUp(handleForm(data))
+const onSignUp = function (event) {
+  api.signUp(handleForm(event))
+  // .then(controller.handleSignUp)
     .then(store.setUser)
     .then(ui.displayMessage)
     .catch(console.error)
 }
 
-const onLogIn = function (data) {
-  console.log(data)
-  api.logIn(handleForm(data))
+const onLogIn = function (event) {
+  api.logIn(handleForm(event))
     // .then(controller.handleLogIn)
     .then(user => store.setUser(user))
     .then(user => {
@@ -28,9 +27,8 @@ const onLogIn = function (data) {
     .catch(console.error)
 }
 
-const onLogOut = function (data) {
-  console.log(data)
-  api.logOut(handleForm(data))
+const onLogOut = function (event) {
+  api.logOut(handleForm(event))
   // .then(controller.handleLogOut)
     .then(store.setUser)
     .then(user => {
@@ -40,9 +38,8 @@ const onLogOut = function (data) {
     .catch(console.error)
 }
 
-const onChangePassword = function (data) {
-  console.log(data)
-  api.changePassword(handleForm(data))
+const onChangePassword = function (event) {
+  api.changePassword(handleForm(event))
   // .then(controller.handleChangePassword)
     .then(store.setUser)
     .then(user => {
@@ -52,9 +49,8 @@ const onChangePassword = function (data) {
     .catch(console.error)
 }
 
-const onDeleteAccount = function (data) {
-  console.log(data)
-  api.deleteAccount(handleForm(data))
+const onDeleteAccount = function (event) {
+  api.deleteAccount(handleForm(event))
   // .then(controller.handleDeleteAccount)
     .then(store.setUser)
     .then(ui.displayMessage)

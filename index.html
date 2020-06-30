@@ -18,7 +18,7 @@
       <nav>
         <ul>
           <li>
-            <h4>User Sign Up</h4>
+            <h6>User Sign Up</h6>
             <form id="sign-up">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
@@ -27,7 +27,7 @@
             </form>
           </li>
           <li>
-            <h4>User Log In</h4>
+            <h6>User Log In</h6>
             <form id="log-in">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
@@ -35,7 +35,7 @@
             </form>
           </li>
           <li>
-            <h4>Account Options</h4>
+            <h6>Account Options</h6>
             <form id="change-password">
               <input type="password" name="passwords[old]" required placeholder="Old Password">
               <input type="password" name="passwords[new]" required placeholder="New Password">
@@ -43,13 +43,13 @@
             </form>
           </li>
           <li>
-            <h4>Delete Account</h4>
-            <form id="#delete-account">
+            <h6>Delete Account</h6>
+            <form id="delete-account">
               <button type="submit" class="btn">Delete Account</button>
             </form>
           </li>
           <li>
-            <h4>Log Out</h4>
+            <h6>Log Out</h6>
             <form id="log-out">
               <button type="submit" class="btn">Log out</button>
             </form>
@@ -57,6 +57,25 @@
         </ul>
       </nav>
       <main>
+        <section>
+          <h6>Show Forums</h6>
+          <form id="show-all-forums">
+            <button type="submit" class="btn">Show all forums</button>
+          </form>
+          <form id="show-user-forums">
+            <button type="submit" class="btn">Show your forums</button>
+          </form>
+          <h6>Create Forum</h6>
+          <form id="create-forum">
+            <input type="text" name="forum[name]" required placeholder="Forum Name">
+            <button type="submit" class="btn">Create Forum</button>
+          </form>
+          <h6>Edit Forum</h6>
+          <form id="edit-forum">
+            <input type="text" name="forum[name]" required placeholder="Forum Name">
+            <button type="submit" class="btn">Edit Forum</button>
+          </form>
+        </section>
         <section id="forum-area">
           <!-- Put posts in here -->
           <ul class="posts" id="main-forum">
@@ -72,6 +91,14 @@
           <form id="create-post">
             <button type="submit" class="btn">Post</button>
           </form>
+        <!-- show-all-forums
+        show-user-forum-list
+        create-forum
+        edit-forum
+        detete-forum
+        create-post
+        edit-post
+        delete-post -->
         </section>
       </main>
     </body>

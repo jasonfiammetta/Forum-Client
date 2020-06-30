@@ -1,4 +1,4 @@
-const store = require('./store.js')
+const store = require('./../store.js') // probably don't need this
 
 const $message = $('#message')
 const $token = $('#token')
@@ -13,6 +13,7 @@ const displayToken = function () {
   const token = store.getToken()
   console.log('display token', token)
   $token.text(token)
+  // $token.text(store.getToken())
 }
 
 module.exports = {

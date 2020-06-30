@@ -1,5 +1,5 @@
 const api = require('./../api.js')
-const store = require('./store.js')
+const store = require('./../store.js')
 
 const signUp = function (data) {
   return api.createCall('POST', '/sign-up')
@@ -27,6 +27,7 @@ const changePassword = function (data) {
 }
 
 const deleteAccount = function (data) {
+  console.log('Deleting account')
   return api.createCall('DELETE', '/delete-account')
     .addHeader(store.getToken())
     .callAjax()
