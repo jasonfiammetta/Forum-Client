@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Forums R Us</h1>
+      <p id="message"></p>
+      <p id="token"></p>
+      <nav>
+        <ul>
+          <li>
+            <h4>User Sign Up</h4>
+            <form id="sign-up">
+              <input type="email" name="credentials[email]" required placeholder="Email">
+              <input type="password" name="credentials[password]" required placeholder="Password">
+              <input type="password" name="credentials[password_confirmation]" required placeholder="Password">
+              <button type="submit" class="btn">Sign Up</button>
+            </form>
+          </li>
+          <li>
+            <h4>User Log In</h4>
+            <form id="log-in">
+              <input type="email" name="credentials[email]" required placeholder="Email">
+              <input type="password" name="credentials[password]" required placeholder="Password">
+              <button type="submit" class="btn">Log In</button>
+            </form>
+          </li>
+          <li>
+            <h4>Account Options</h4>
+            <form id="change-password">
+              <input type="password" name="passwords[old]" required placeholder="Old Password">
+              <input type="password" name="passwords[new]" required placeholder="New Password">
+              <button type="submit" class="btn">Change Password</button>
+            </form>
+          </li>
+          <li>
+            <h4>Delete Account</h4>
+            <form id="#delete-account">
+              <button type="submit" class="btn">Delete Account</button>
+            </form>
+          </li>
+          <li>
+            <h4>Log Out</h4>
+            <form id="log-out">
+              <button type="submit" class="btn">Log out</button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <main>
+        <section id="forum-area">
+          <!-- Put posts in here -->
+          <ul class="posts" id="main-forum">
+            <!-- Comment this li out once posting is working -->
+            <li class="post">
+              <p>At [timestamp], [username] said:</p>
+              <p>A very insightful and enlightening post.</p>
+            </li>
+          </ul>
+        </section>
+        <section id="write-posts">
+          <textarea id="user-post" rows="4" cols="80"></textarea>
+          <form id="create-post">
+            <button type="submit" class="btn">Post</button>
+          </form>
+        </section>
+      </main>
+    </body>
+</html>
