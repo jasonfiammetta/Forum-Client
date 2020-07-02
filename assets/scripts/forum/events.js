@@ -37,7 +37,7 @@ const onShowAllForums = function (event) {
 const onShowUserForums = function (event) {
   event.preventDefault()
 
-  api.getUserForums() // Send user? Or client remembers user?
+  api.getOneForum(store.getForum()) // Send user? Or client remembers user?
     .then(ui.showForum)
     .catch(console.error)
 }
@@ -78,8 +78,9 @@ const onForumItem = function (event) {
 
   const id = $(event.currentTarget).data('forum-id')
   // console.log('Forum clicked, currentTarget ID: ', id)
+  const name = $(event.currentTarget).data('forum-name')
   store.setForum(id)
-  ui.selectForum(id)
+  ui.selectForum(name)
 }
 
 module.exports = {

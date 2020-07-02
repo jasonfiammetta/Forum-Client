@@ -13,8 +13,8 @@ const getForums = function () {
     .callAjax()
 }
 
-const getUserForums = function () {
-  return api.createCall('GET', '/forums')
+const getOneForum = function (id) {
+  return api.createCall('GET', '/forums/' + id)
     .addHeader(store.getToken())
     .callAjax()
 }
@@ -35,7 +35,7 @@ const deleteForum = function (data) {
 module.exports = {
   createForum,
   getForums,
-  getUserForums,
+  getOneForum,
   editForum,
   deleteForum
 }

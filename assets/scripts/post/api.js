@@ -3,7 +3,7 @@ const store = require('./../store.js')
 
 const createPost = function (data) {
   console.log(data)
-  return api.createCall('POST', '/forums/' + data.post.forum)
+  return api.createCall('POST', '/forums/' + data.post.forum + '/post')
     .addHeader(store.getToken())
     .addBody(data)
     .callAjax()
