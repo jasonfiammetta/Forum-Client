@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Forums R Us</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -13,7 +13,7 @@
     </head>
     <body>
       <h1>Forums R Us</h1>
-      <p id="message"></p>
+      <p id="user-message"></p>
       <p id="token"></p>
       <nav>
         <ul>
@@ -59,21 +59,40 @@
       <main>
         <section>
           <h6>Show Forums</h6>
+          <p id="forum-message"></p>
           <form id="show-all-forums">
             <button type="submit" class="btn">Show all forums</button>
           </form>
+          <ul class="forum-list" id="all-forums-list">
+            <!-- Forum list -->
+            <li>
+              <p>Awesome Forum Name</p>
+            </li>
+          </ul>
           <form id="show-user-forums">
             <button type="submit" class="btn">Show your forums</button>
           </form>
+          <ul class="forum-list" id="user-forums-list">
+            <!-- Forum list -->
+            <li>
+              <p>YOUR Awesome Forum Name</p>
+            </li>
+          </ul>
           <h6>Create Forum</h6>
           <form id="create-forum">
-            <input type="text" name="forum[name]" required placeholder="Forum Name">
+            <input type="text" name="forum[title]" required placeholder="Forum Title">
             <button type="submit" class="btn">Create Forum</button>
           </form>
           <h6>Edit Forum</h6>
           <form id="edit-forum">
-            <input type="text" name="forum[name]" required placeholder="Forum Name">
+            <input type="text" name="forum[oldTitle]" required placeholder="Old Forum Name">
+            <input type="text" name="forum[newTitle]" required placeholder="New Forum Name">
             <button type="submit" class="btn">Edit Forum</button>
+          </form>
+          <h6>Delete Forum</h6>
+          <form id="delete-forum">
+            <input type="text" name="forum[title]" required placeholder="Forum Title">
+            <button type="submit" class="btn">Delete Forum</button>
           </form>
         </section>
         <section id="forum-area">
@@ -86,19 +105,20 @@
             </li>
           </ul>
         </section>
-        <section id="write-posts">
-          <textarea id="user-post" rows="4" cols="80"></textarea>
+        <section id="post-area">
+          <p id="post-message">No Selected Forum</p>
           <form id="create-post">
+            <textarea type="text" name="post[body]" required id="user-post" rows="4" cols="80"></textarea>
             <button type="submit" class="btn">Post</button>
           </form>
-        <!-- show-all-forums
-        show-user-forum-list
-        create-forum
-        edit-forum
-        detete-forum
-        create-post
-        edit-post
-        delete-post -->
+          <form id="edit-post">
+            <input type="text" name="post[id]" required placeholder="Post ID">
+            <button type="submit" class="btn">Edit Post</button>
+          </form>
+          <form id="delete-post">
+            <input type="text" name="post[id]" required placeholder="Post ID">
+            <button type="submit" class="btn">Delete Post</button>
+          </form>
         </section>
       </main>
     </body>

@@ -12,10 +12,14 @@ const apiCall = {
     }
     return this
   },
-  addBody: function (bodyName, data) {
-    this.call.data = {
-      [bodyName]: data
-    }
+  // addBody: function (bodyName, data) {
+  //   this.call.data = {
+  //     [bodyName]: data
+  //   }
+  //   return this
+  // },
+  addBody: function (data) {
+    this.call.data = data
     return this
   },
   callAjax: function () {

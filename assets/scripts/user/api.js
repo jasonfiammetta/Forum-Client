@@ -3,13 +3,14 @@ const store = require('./../store.js')
 
 const signUp = function (data) {
   return api.createCall('POST', '/sign-up')
-    .addBody('credentials', data.credentials)
+    .addBody(data)
     .callAjax()
 }
 
 const logIn = function (data) {
+  console.log(data)
   return api.createCall('POST', '/log-in')
-    .addBody('credentials', data.credentials)
+    .addBody(data)
     .callAjax()
 }
 
@@ -22,7 +23,7 @@ const logOut = function () {
 const changePassword = function (data) {
   return api.createCall('PATCH', '/change-password')
     .addHeader(store.getToken())
-    .addBody('passwords', data.passwords)
+    .addBody(data)
     .callAjax()
 }
 

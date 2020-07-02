@@ -30,29 +30,21 @@ const onLogIn = function (event) {
 const onLogOut = function (event) {
   api.logOut(handleForm(event))
   // .then(controller.handleLogOut)
-    .then(store.setUser)
-    .then(user => {
-      ui.displayMessage(user)
-      ui.displayToken()
-    })
+    .then(store.unsetUser)
+    .then(ui.displayMessage)
     .catch(console.error)
 }
 
 const onChangePassword = function (event) {
   api.changePassword(handleForm(event))
   // .then(controller.handleChangePassword)
-    .then(store.setUser)
-    .then(user => {
-      ui.displayMessage(user)
-      ui.displayToken()
-    })
     .catch(console.error)
 }
 
 const onDeleteAccount = function (event) {
   api.deleteAccount(handleForm(event))
   // .then(controller.handleDeleteAccount)
-    .then(store.setUser)
+    .then(store.unsetUser)
     .then(ui.displayMessage)
     .catch(console.error)
 }

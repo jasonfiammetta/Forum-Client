@@ -1,11 +1,12 @@
 const store = require('./../store.js') // probably don't need this
 
-const $message = $('#message')
+const $message = $('#user-message')
 const $token = $('#token')
 const $allForms = $('form')
 
 const displayMessage = function (message) {
   $message.text(JSON.stringify(message))
+  // displayToken()
   $allForms.trigger('reset')
 }
 
