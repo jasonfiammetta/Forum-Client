@@ -21,7 +21,7 @@ const showForums = function (response) {
     // console.log('append this', forum)
     $forumList.append(
       `<li class="forum-item" data-forum-id="${forum._id}" data-forum-name="${forum.title}">
-        <p>Forum: ${forum.title}, Posted by ${forum.owner.email}</p>
+        <p>Forum: ${forum.title}, Posted by ${forum.owner ? forum.owner.email : 'Deleted User'}</p>
       </li>`
     )
   })
