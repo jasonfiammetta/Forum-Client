@@ -1,19 +1,25 @@
 // 'use strict'
 
+const view = require('./view.js')
+
 const userEvents = require('./user/events.js')
 const forumEvents = require('./forum/events.js')
 const postEvents = require('./post/events.js')
 
 $(() => {
+  view.showLoggedOutView()
+
   // User auth
   $('#sign-up').on('submit', userEvents.onSignUp)
   $('#log-in').on('submit', userEvents.onLogIn)
-  $('#log-out').on('click', userEvents.onLogOut)
+  $('#log-out').on('submit', userEvents.onLogOut)
   $('#change-password').on('submit', userEvents.onChangePassword)
   $('#delete-account').on('click', userEvents.onDeleteAccount)
 
   // Forum CRUD
   $('#show-all-forums').on('click', forumEvents.onShowAllForums)
+  forumEvents.showAllForums()
+
   $('#show-user-forums').on('click', forumEvents.onShowUserForums)
   $('#create-forum').on('submit', forumEvents.onCreateForum)
   $('#edit-forum').on('submit', forumEvents.onEditForum)

@@ -1,12 +1,11 @@
-const store = require('./../store.js') // probably don't need this
-
 const $message = $('#user-message')
 const $token = $('#token')
 const $allForms = $('form')
+const store = require('./../store')
 
 const displayMessage = function (message) {
   $message.text(JSON.stringify(message))
-  // displayToken()
+  displayToken()
   $allForms.trigger('reset')
 }
 
@@ -18,6 +17,6 @@ const displayToken = function () {
 }
 
 module.exports = {
-  displayMessage,
-  displayToken
+  displayMessage
+  // displayToken
 }

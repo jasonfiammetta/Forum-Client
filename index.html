@@ -17,7 +17,7 @@
       <p id="token"></p>
       <nav>
         <ul>
-          <li>
+          <li class="logged-out-view">
             <h6>User Sign Up</h6>
             <form id="sign-up">
               <input type="email" name="credentials[email]" required placeholder="Email">
@@ -26,7 +26,7 @@
               <button type="submit" class="btn">Sign Up</button>
             </form>
           </li>
-          <li>
+          <li class="logged-out-view">
             <h6>User Log In</h6>
             <form id="log-in">
               <input type="email" name="credentials[email]" required placeholder="Email">
@@ -34,7 +34,7 @@
               <button type="submit" class="btn">Log In</button>
             </form>
           </li>
-          <li>
+          <li class="logged-in-view">
             <h6>Account Options</h6>
             <form id="change-password">
               <input type="password" name="passwords[old]" required placeholder="Old Password">
@@ -42,13 +42,11 @@
               <button type="submit" class="btn">Change Password</button>
             </form>
           </li>
-          <li>
+          <li class="logged-in-view">
             <h6>Delete Account</h6>
-            <form id="delete-account">
-              <button type="submit" class="btn">Delete Account</button>
-            </form>
+            <button id="delete-account" type="button" class="btn">Delete Account</button>
           </li>
-          <li>
+          <li class="logged-in-view">
             <h6>Log Out</h6>
             <form id="log-out">
               <button type="submit" class="btn">Log out</button>
@@ -58,26 +56,21 @@
       </nav>
       <main>
         <section>
-          <h6>Show Forums</h6>
+          <h6>Forums</h6>
           <p id="forum-message"></p>
-          <form id="show-all-forums">
+          <!-- <form id="show-all-forums">
             <button type="submit" class="btn">Show all forums</button>
-          </form>
+          </form> -->
           <ul class="forum-list" id="all-forums-list">
             <!-- Forum list -->
-            <!-- <li>
-              <p>Awesome Forum Name</p>
-            </li> -->
           </ul>
-          <form id="show-user-forums">
+          <!-- <form id="show-user-forums">
             <button type="submit" class="btn">Show your forums</button>
           </form>
           <ul class="forum-list" id="user-forums-list">
-            <!-- Forum list -->
-            <li>
-              <p>YOUR Awesome Forum Name</p>
-            </li>
-          </ul>
+          </ul> -->
+        </section>
+        <section class="forum-crud-view">
           <h6>Create Forum</h6>
           <form id="create-forum">
             <input type="text" name="forum[title]" required placeholder="Forum Title">
@@ -99,13 +92,13 @@
           <!-- Put posts in here -->
           <ul class="posts" id="main-forum">
             <!-- Comment this li out once posting is working -->
-            <li class="post">
+            <!-- <li class="post">
               <p>At [timestamp], [username] said:</p>
               <p>A very insightful and enlightening post.</p>
-            </li>
+            </li> -->
           </ul>
         </section>
-        <section id="post-area">
+        <section class="post-crud-view" id="post-area">
           <p id="post-message">No Selected Forum</p>
           <form id="create-post">
             <textarea type="text" name="post[body]" required id="user-post" rows="4" cols="80"></textarea>

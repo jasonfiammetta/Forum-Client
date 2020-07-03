@@ -23,12 +23,17 @@ const onCreateForum = function (event) {
   // controller.createForum(data)
   api.createForum(data)
     .then(ui.createForum)
+    .then(showAllForums)
     .catch(console.error)
 }
 
 const onShowAllForums = function (event) {
   event.preventDefault()
 
+  showAllForums()
+}
+
+const showAllForums = function () {
   api.getForums()
     .then(ui.showForums)
     .catch(console.error)
@@ -54,6 +59,7 @@ const onEditForum = function (event) {
   console.log('edit forum data', data)
   api.editForum(data)
     .then(ui.showForums)
+    .then(showAllForums)
     .catch(console.error)
 }
 
@@ -70,6 +76,7 @@ const onDeleteForum = function (event) {
   console.log(data)
   api.deleteForum(data.forumID)
     .then(ui.deleteForum)
+    .then(showAllForums)
     .catch(console.error)
 }
 
@@ -89,6 +96,7 @@ const onForumItem = function (event) {
 module.exports = {
   onCreateForum,
   onShowAllForums,
+  showAllForums,
   onShowUserForums,
   onEditForum,
   onDeleteForum,

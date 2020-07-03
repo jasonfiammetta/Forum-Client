@@ -1,5 +1,6 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
+const view = require('./../view.js')
 const store = require('./../store.js')
 const getFormFields = require('./../../../lib/get-form-fields.js')
 
@@ -11,27 +12,34 @@ const handleForm = function (event) {
 const onSignUp = function (event) {
   api.signUp(handleForm(event))
   // .then(controller.handleSignUp)
-    .then(store.setUser)
+    // .then(store.setUser)
+    .then(user => store.setUser(user))
     .then(ui.displayMessage)
+    .then(view.showLoggedInView)
     .catch(console.error)
 }
 
+// .then(store.setUser) Doesn't work for some reason,
+// but .then(user => store.setUser(user)) does????????
 const onLogIn = function (event) {
-  api.logIn(handleForm(event))
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.logIn(data)
     // .then(controller.handleLogIn)
-    .then(user => store.setUser(user))
-    .then(user => {
-      ui.displayMessage(user)
-      ui.displayToken()
-    })
+    .then(a => store.setUser(a)) // ???
+    // .then(store.setUser)
+    .then(ui.displayMessage)
+    .then(view.showLoggedInView)
     .catch(console.error)
 }
 
 const onLogOut = function (event) {
-  api.logOut(handleForm(event))
+  event.preventDefault()
+  api.logOut()
   // .then(controller.handleLogOut)
-    .then(store.unsetUser)
+    .then(a => store.unsetUser(a))
     .then(ui.displayMessage)
+    .then(view.showLoggedOutView)
     .catch(console.error)
 }
 
@@ -46,6 +54,7 @@ const onDeleteAccount = function (event) {
   // .then(controller.handleDeleteAccount)
     .then(store.unsetUser)
     .then(ui.displayMessage)
+    .then(view.showLoggedOutView)
     .catch(console.error)
 }
 
