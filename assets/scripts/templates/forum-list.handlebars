@@ -1,3 +1,18 @@
-{{#each forums}}
-
+<!-- $forumList.html('')
+response.forums.forEach(forum => {
+  // console.log('append this', forum)
+  $forumList.append(
+    `<li class="forum-item" data-forum-id="${forum._id}" data-forum-name="${forum.title}">
+      <p>Forum: ${forum.title}, Posted by ${forum.owner ? forum.owner.email : 'Deleted User'}</p>
+    </li>`
+  )
+}) -->
+{{#each forums as |forum|}}
+  <li class="forum-item" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}">
+    <p>Forum: {{forum.title}}, Posted by {{#if forum.owner}}
+        {{forum.owner.email}}
+      {{else}}
+        Deleted User
+      {{/if}}</p>
+  </li>
 {{/each}}

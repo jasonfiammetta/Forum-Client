@@ -22,6 +22,11 @@ const onCreateForum = function (event) {
   console.log('create forum data', data)
   // controller.createForum(data)
   api.createForum(data)
+    .then(response => {
+      console.log(response)
+      store.setForum(response.forum._id)
+      return response.forum.title
+    })
     .then(ui.createForum)
     .then(showAllForums)
     .catch(console.error)
@@ -41,7 +46,6 @@ const showAllForums = function () {
 
 const onShowUserForums = function (event) {
   event.preventDefault()
-
   api.getOneForum(store.getForum())
     .then(ui.showForum)
     .catch(console.error)

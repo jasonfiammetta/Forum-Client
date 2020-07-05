@@ -8,7 +8,8 @@ const postEvents = require('./post/events.js')
 
 $(() => {
   view.showLoggedOutView()
-
+  // move to separate handler files and do userEvents = require('./user/eventHandlers.js')
+  // userEvents.addHandlers()
   // User auth
   $('#sign-up').on('submit', userEvents.onSignUp)
   $('#log-in').on('submit', userEvents.onLogIn)

@@ -1,10 +1,21 @@
 @import '~bootstrap/scss/bootstrap';
 
 $background: #d0ccff;
+$post-header-background: #333344;
+$post-header-text: #eeeeff;
 
 body {
   background-color: $background;
   padding: 10px;
+}
+
+.post {
+  background-color: adjust-color($background, $lightness: 5%);
+}
+
+.post-header {
+  background-color: $post-header-background;
+  color: $post-header-text;
 }
 
 // For local fonts, put the files in `public`, and then import and use them in a

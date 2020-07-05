@@ -20,6 +20,9 @@ const store = {
     }
     return this.user.token
   },
+  getAuthor: function () {
+    return this.user.email
+  },
 
   currentForum: null,
   setForum: function (forumID) {
