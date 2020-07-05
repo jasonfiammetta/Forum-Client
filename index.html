@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Forums R Us</h1>
+      <div class="sticky-top bg-dark rounded-bottom" id="title"><h1>Forums R Us</h1></div>
       <p id="user-message"></p>
       <p id="token"></p>
       <nav>
@@ -56,14 +56,14 @@
       </nav>
       <main>
         <section>
-          <h6>Forums</h6>
+          <!-- <h6>Forums</h6> -->
+          <a class="btn btn-secondary" data-toggle="collapse" href="#forum-collapse">Forums</a>
           <p id="forum-message"></p>
-          <!-- <form id="show-all-forums">
-            <button type="submit" class="btn">Show all forums</button>
-          </form> -->
-          <ul class="forum-list" id="all-forums-list">
-            <!-- Forum list -->
-          </ul>
+          <div class="collapse" id="forum-collapse">
+            <ul class="forum-list list-unstyled" id="all-forums-list">
+              <!-- Forum list -->
+            </ul>
+          </div>
           <!-- <form id="show-user-forums">
             <button type="submit" class="btn">Show your forums</button>
           </form>
@@ -91,8 +91,8 @@
         <section id="forum-area">
           <p id="post-message">No Selected Forum</p>
           <!-- Put posts in here -->
-          <ul class="posts" id="main-forum">
-            <!-- Comment this li out once posting is working -->
+          <ul class="posts list-unstyled" id="main-forum">
+            <!-- Example post -->
             <!-- <li class="post">
               <p>At [timestamp], [username] said:</p>
               <p>A very insightful and enlightening post.</p>
@@ -101,7 +101,7 @@
         </section>
         <section class="post-crud-view" id="post-area">
           <form id="create-post">
-            <textarea type="text" name="post[body]" required id="user-post" rows="4" cols="80"></textarea>
+            <textarea type="text" name="post[body]" required id="user-post" rows="4"></textarea>
             <button type="submit" class="btn">Post</button>
           </form>
           <form id="edit-post">

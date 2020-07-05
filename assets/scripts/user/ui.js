@@ -16,7 +16,12 @@ const displayToken = function () {
   // $token.text(store.getToken())
 }
 
+const clearForums = function () {
+  $allForms.trigger('reset')
+}
+
 module.exports = {
-  displayMessage
+  displayMessage,
   // displayToken
+  clearForums
 }

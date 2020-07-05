@@ -21,7 +21,7 @@ const store = {
     return this.user.token
   },
   getAuthor: function () {
-    return this.user.email
+    return this.user && this.user.email
   },
 
   currentForum: null,

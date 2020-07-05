@@ -1,6 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 
+$title: #5555ff;
 $background: #d0ccff;
+$selection: #aa99ee;
 $post-header-background: #333344;
 $post-header-text: #eeeeff;
 
@@ -9,13 +11,45 @@ body {
   padding: 10px;
 }
 
+#title {
+  margin: -10px;
+  // // margin-top: -50px;
+  padding-left: 10px;
+  color: $post-header-text; // name this variable something different
+}
+
+.forum-item {
+  // margin-bottom: 0; // Isn't overriding bootstrap
+}
+
+.forum-item:hover {
+  background-color: $selection;
+}
+
+.list-group-item.post {
+  padding: 5px;
+}
+.list-group-item.post-header {
+  padding: 5px;
+}
+
+// .whole-post {
+//   width: 95%;
+// }
+
 .post {
   background-color: adjust-color($background, $lightness: 5%);
+  // height: 2ems;
 }
 
 .post-header {
   background-color: $post-header-background;
   color: $post-header-text;
+}
+
+textarea {
+  margin: 10px;
+  width: 95%;
 }
 
 // For local fonts, put the files in `public`, and then import and use them in a

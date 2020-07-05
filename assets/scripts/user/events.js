@@ -46,6 +46,7 @@ const onLogOut = function (event) {
 const onChangePassword = function (event) {
   api.changePassword(handleForm(event))
   // .then(controller.handleChangePassword)
+    .then(ui.clearForums)
     .catch(console.error)
 }
 
