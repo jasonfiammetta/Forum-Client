@@ -18,8 +18,8 @@ body {
   color: $post-header-text; // name this variable something different
 }
 
-.forum-item {
-  // margin-bottom: 0; // Isn't overriding bootstrap
+.forum-title {
+  margin-bottom: 0; // Isn't overriding bootstrap
 }
 
 .forum-item:hover {

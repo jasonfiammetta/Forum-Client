@@ -13,7 +13,7 @@ $(() => {
   // User auth
   $('#sign-up').on('submit', userEvents.onSignUp)
   $('#log-in').on('submit', userEvents.onLogIn)
-  $('#log-out').on('submit', userEvents.onLogOut)
+  $('#log-out').on('click', userEvents.onLogOut)
   $('#change-password').on('submit', userEvents.onChangePassword)
   $('#delete-account').on('click', userEvents.onDeleteAccount)
 

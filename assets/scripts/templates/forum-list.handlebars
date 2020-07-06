@@ -9,9 +9,12 @@ response.forums.forEach(forum => {
 }) -->
 {{#each forums as |forum|}}
   <!-- <li class="forum-item list-group-item d-flex justify-content-between align-items-center" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}"> -->
-  <li class="forum-item list-group-item" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}">
-    <p>Forum: {{forum.title}}, Posted by {{#if forum.owner}}
+  <li class="forum-item list-group-item rounded-bottom" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}">
+    <p class="forum-title">Forum: {{forum.title}}, Posted by {{#if forum.owner}}
         {{forum.owner.email}}
+        <!-- {{#if (isAuthorOf forum.owner.email)}}
+          Owns this<button type="button" class="btn btn-sm btn-danger">Delete Forum</button>
+        {{/if}} -->
       {{else}}
         Deleted User
       {{/if}}</p>

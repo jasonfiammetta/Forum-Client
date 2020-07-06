@@ -97,6 +97,12 @@ const onForumItem = function (event) {
     .catch(console.error)
 }
 
+const showOneForum = function () {
+  api.getOneForum(store.getForum())
+    .then(ui.showForum)
+    .catch(console.error)
+}
+
 module.exports = {
   onCreateForum,
   onShowAllForums,
@@ -104,5 +110,6 @@ module.exports = {
   onShowUserForums,
   onEditForum,
   onDeleteForum,
-  onForumItem
+  onForumItem,
+  showOneForum
 }

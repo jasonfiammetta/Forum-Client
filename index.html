@@ -13,12 +13,14 @@
     </head>
     <body>
       <div class="sticky-top bg-dark rounded-bottom" id="title"><h1>Forums R Us</h1></div>
-      <p id="user-message"></p>
-      <p id="token"></p>
+      <!-- <p id="user-message"></p>
+      <p id="token"></p> -->
       <nav>
-        <ul>
-          <li class="logged-out-view">
-            <h6>User Sign Up</h6>
+        <ul class="nav justify-content-end logged-out-view">
+          <li class="nav-item">
+            <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#sign-up-collapse">User Sign Up</button>
+          </li>
+          <li class="collapse nav-item" id="sign-up-collapse">
             <form id="sign-up">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
@@ -26,31 +28,37 @@
               <button type="submit" class="btn">Sign Up</button>
             </form>
           </li>
-          <li class="logged-out-view">
-            <h6>User Log In</h6>
+          <li class="nav-item">
+            <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#log-in-collapse">User Log In</button>
+          </li>
+          <li class="collapse nav-item" id="log-in-collapse">
             <form id="log-in">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
               <button type="submit" class="btn">Log In</button>
             </form>
           </li>
-          <li class="logged-in-view">
-            <h6>Account Options</h6>
-            <form id="change-password">
-              <input type="password" name="passwords[old]" required placeholder="Old Password">
-              <input type="password" name="passwords[new]" required placeholder="New Password">
-              <button type="submit" class="btn">Change Password</button>
-            </form>
-          </li>
-          <li class="logged-in-view">
-            <h6>Delete Account</h6>
-            <button id="delete-account" type="button" class="btn">Delete Account</button>
-          </li>
-          <li class="logged-in-view">
-            <h6>Log Out</h6>
-            <form id="log-out">
-              <button type="submit" class="btn">Log out</button>
-            </form>
+        </ul>
+        <ul class="nav justify-content-end logged-in-view"
+          <li class="nav-item">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Account Options</button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#change-password-collapse">Change Password</button>
+              <div class="collapse" id="change-password-collapse">
+                <form id="change-password">
+                  <input type="password" name="passwords[old]" required placeholder="Old Password">
+                  <input type="password" name="passwords[new]" required placeholder="New Password">
+                  <button type="submit" class="btn">Change Password</button>
+                </form>
+              </div>
+              <button class="dropdown-item" id="log-out" type="button">Log out</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#delete-account-collapse">Delete Account</button>
+              <div class="collapse" id="delete-account-collapse">
+                <p>Are you sure you want to delete your account? This action is permanent.</p>
+                <button id="delete-account" type="button" class="btn btn-danger">Delete Account</button>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
@@ -76,7 +84,7 @@
             <input type="text" name="forum[title]" required placeholder="Forum Title">
             <button type="submit" class="btn">Create Forum</button>
           </form>
-          <h6>Edit Forum</h6>
+          <!-- <h6>Edit Forum</h6>
           <form id="edit-forum">
             <input type="text" name="forum[oldTitle]" required placeholder="Old Forum Name">
             <input type="text" name="forum[newTitle]" required placeholder="New Forum Name">
@@ -86,10 +94,10 @@
           <form id="delete-forum">
             <input type="text" name="forum[title]" required placeholder="Forum Title">
             <button type="submit" class="btn">Delete Forum</button>
-          </form>
+          </form> -->
         </section>
         <section id="forum-area">
-          <p id="post-message">No Selected Forum</p>
+          <h2 id="post-message">No Selected Forum</h2>
           <!-- Put posts in here -->
           <ul class="posts list-unstyled" id="main-forum">
             <!-- Example post -->
@@ -102,16 +110,16 @@
         <section class="post-crud-view" id="post-area">
           <form id="create-post">
             <textarea type="text" name="post[body]" required id="user-post" rows="4"></textarea>
-            <button type="submit" class="btn">Post</button>
+            <button type="submit" class="btn btn-primary">Post</button>
           </form>
-          <form id="edit-post">
+          <!-- <form id="edit-post">
             <input type="text" name="post[id]" required placeholder="Post ID">
             <button type="submit" class="btn">Edit Post</button>
           </form>
           <form id="delete-post">
             <input type="text" name="post[id]" required placeholder="Post ID">
             <button type="submit" class="btn">Delete Post</button>
-          </form>
+          </form> -->
         </section>
       </main>
     </body>

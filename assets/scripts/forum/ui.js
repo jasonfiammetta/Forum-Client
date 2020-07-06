@@ -5,13 +5,14 @@ const forumListTemplate = require('./../templates/forum-list.handlebars')
 const $postMessage = $('#post-message')
 const $postArea = $('#main-forum')
 const postTemplate = require('./../templates/post-template.handlebars')
+const store = require('./../store.js')
 
 const selectForum = function (title) {
   $postMessage.text('Selected Forum: ' + title)
 }
 
 const createForum = function (title) {
-  $message.text('Created a forum!')
+  // $message.text('Created a forum!')
   $allForms.trigger('reset')
   console.log('create forum title', title)
   selectForum(title)
@@ -19,16 +20,22 @@ const createForum = function (title) {
 
 // handlebars
 const showForums = function (response) {
-  console.log(response)
-  // $allForms.trigger('reset') // necessary anymore?
+  // console.log('show forums', response)
+  // if (response.forums.length > 0) {
   $forumList.html(forumListTemplate({ forums: response.forums }))
+  // } else { // can probably do this in handlebars too
+  //   $forumList.html('<li class="list-group-item disabled">No forums yet.</li>')
+  // }
 }
 
 const showForum = function (forumResponse) {
   $postArea.html('') // handlebars ?
   console.log('forum object', forumResponse)
-  // forumResponse.forum.posts.forEach(post => $postArea.append(makePost(post)))
-  forumResponse.forum.posts.forEach(post => $postArea.append(postTemplate(post)))
+  if (forumResponse.forum.posts.length > 0) {
+    forumResponse.forum.posts.forEach(post => $postArea.append(postTemplate(post)))
+  } else {
+    $postArea.html('<li class="list-group-item disabled">No posts in this forum yet.</li>')
+  }
   // $postArea.html(multiPostTemplate(forumResponse.forum.posts))
 }
 
