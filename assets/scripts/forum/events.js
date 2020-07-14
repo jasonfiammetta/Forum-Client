@@ -1,6 +1,7 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./../store.js') // remove this eventually
+const view = require('./../view.js')
 const getFormFields = require('./../../../lib/get-form-fields.js')
 
 // const handleForm = function (event) {
@@ -25,10 +26,12 @@ const onCreateForum = function (event) {
     .then(response => {
       console.log(response)
       store.setForum(response.forum._id)
+      if (store.loggedIn) { view.showPostCrudView() }
       return response.forum.title
     })
     .then(ui.createForum)
     .then(showAllForums)
+    .then(showOneForum)
     .catch(console.error)
 }
 
@@ -53,6 +56,7 @@ const onShowUserForums = function (event) {
 
 const onEditForum = function (event) {
   event.preventDefault()
+  event.stopPropagation()
 
   if (!store.getToken()) {
     console.log('No token found')
@@ -69,18 +73,21 @@ const onEditForum = function (event) {
 
 const onDeleteForum = function (event) {
   event.preventDefault()
+  event.stopPropagation()
 
   if (!store.getToken()) {
     console.log('No token found')
     // ui.(noTokenFail)
     return
   }
-  const data = getFormFields(event)
-  console.log('delete forum data', data)
-  console.log(data)
-  api.deleteForum(data.forumID)
-    .then(ui.deleteForum)
+  console.log(event.target)
+  api.deleteForum(store.getForum()) // NOPE don't delete current forum, delete forum with button
     .then(showAllForums)
+    .then(() => {
+      store.setForum(null)
+      view.hidePostCrudView()
+    })
+    .then(ui.deleteForum)
     .catch(console.error)
 }
 
@@ -92,6 +99,7 @@ const onForumItem = function (event) {
   const name = $(event.currentTarget).data('forum-name')
   store.setForum(id)
   ui.selectForum(name)
+  if (store.loggedIn) { view.showPostCrudView() }
   api.getOneForum(store.getForum())
     .then(ui.showForum)
     .catch(console.error)

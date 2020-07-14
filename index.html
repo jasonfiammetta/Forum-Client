@@ -4,10 +4,8 @@
       <title>Forums R Us</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
@@ -18,46 +16,56 @@
       <nav>
         <ul class="nav justify-content-end logged-out-view">
           <li class="nav-item">
-            <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#sign-up-collapse">User Sign Up</button>
+            <!-- <p id="user-message"></p> -->
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-sm btn-secondary" type="button" data-toggle="collapse" data-target="#sign-up-collapse">User Sign Up</button>
           </li>
           <li class="collapse nav-item" id="sign-up-collapse">
             <form id="sign-up">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
               <input type="password" name="credentials[password_confirmation]" required placeholder="Password">
-              <button type="submit" class="btn">Sign Up</button>
+              <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
           </li>
           <li class="nav-item">
-            <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#log-in-collapse">User Log In</button>
+            <button class="btn btn-sm btn-secondary" type="button" data-toggle="collapse" data-target="#log-in-collapse">User Log In</button>
           </li>
           <li class="collapse nav-item" id="log-in-collapse">
             <form id="log-in">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
-              <button type="submit" class="btn">Log In</button>
+              <button type="submit" class="btn btn-primary">Log In</button>
             </form>
           </li>
         </ul>
-        <ul class="nav justify-content-end logged-in-view"
+        <ul class="nav justify-content-end logged-in-view">
+          <li class="nav-item">
+            <p id="greeting"></p>
+          </li>
           <li class="nav-item">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">Account Options</button>
             <div class="dropdown-menu dropdown-menu-right">
               <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#change-password-collapse">Change Password</button>
-              <div class="collapse" id="change-password-collapse">
-                <form id="change-password">
-                  <input type="password" name="passwords[old]" required placeholder="Old Password">
-                  <input type="password" name="passwords[new]" required placeholder="New Password">
-                  <button type="submit" class="btn">Change Password</button>
-                </form>
-              </div>
               <button class="dropdown-item" id="log-out" type="button">Log out</button>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" type="button" data-toggle="collapse" data-target="#delete-account-collapse">Delete Account</button>
-              <div class="collapse" id="delete-account-collapse">
-                <p>Are you sure you want to delete your account? This action is permanent.</p>
-                <button id="delete-account" type="button" class="btn btn-danger">Delete Account</button>
-              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="collapse" id="change-password-collapse">
+              <form id="change-password">
+                <input type="password" name="passwords[old]" required placeholder="Old Password">
+                <input type="password" name="passwords[new]" required placeholder="New Password">
+                <button type="submit" class="btn">Change Password</button>
+              </form>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="collapse" id="delete-account-collapse">
+              <p>Are you sure you want to delete your account? This action is permanent.</p>
+              <button id="delete-account" type="button" class="btn btn-danger">Delete Account</button>
             </div>
           </li>
         </ul>
@@ -65,36 +73,20 @@
       <main>
         <section>
           <!-- <h6>Forums</h6> -->
-          <a class="btn btn-secondary" data-toggle="collapse" href="#forum-collapse">Forums</a>
+          <a id="show-all-forums" class="btn btn-secondary" data-toggle="collapse" href="#forum-collapse">Forums</a>
           <p id="forum-message"></p>
           <div class="collapse" id="forum-collapse">
             <ul class="forum-list list-unstyled" id="all-forums-list">
               <!-- Forum list -->
             </ul>
           </div>
-          <!-- <form id="show-user-forums">
-            <button type="submit" class="btn">Show your forums</button>
-          </form>
-          <ul class="forum-list" id="user-forums-list">
-          </ul> -->
         </section>
         <section class="forum-crud-view">
           <h6>Create Forum</h6>
           <form id="create-forum">
             <input type="text" name="forum[title]" required placeholder="Forum Title">
-            <button type="submit" class="btn">Create Forum</button>
+            <button type="submit" class="btn btn-primary">Create Forum</button>
           </form>
-          <!-- <h6>Edit Forum</h6>
-          <form id="edit-forum">
-            <input type="text" name="forum[oldTitle]" required placeholder="Old Forum Name">
-            <input type="text" name="forum[newTitle]" required placeholder="New Forum Name">
-            <button type="submit" class="btn">Edit Forum</button>
-          </form>
-          <h6>Delete Forum</h6>
-          <form id="delete-forum">
-            <input type="text" name="forum[title]" required placeholder="Forum Title">
-            <button type="submit" class="btn">Delete Forum</button>
-          </form> -->
         </section>
         <section id="forum-area">
           <h2 id="post-message">No Selected Forum</h2>
@@ -112,14 +104,6 @@
             <textarea type="text" name="post[body]" required id="user-post" rows="4"></textarea>
             <button type="submit" class="btn btn-primary">Post</button>
           </form>
-          <!-- <form id="edit-post">
-            <input type="text" name="post[id]" required placeholder="Post ID">
-            <button type="submit" class="btn">Edit Post</button>
-          </form>
-          <form id="delete-post">
-            <input type="text" name="post[id]" required placeholder="Post ID">
-            <button type="submit" class="btn">Delete Post</button>
-          </form> -->
         </section>
       </main>
     </body>

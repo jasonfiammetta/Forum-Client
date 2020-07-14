@@ -8,6 +8,8 @@ const postEvents = require('./post/events.js')
 
 $(() => {
   view.showLoggedOutView()
+  view.hidePostCrudView()
+  forumEvents.showAllForums()
   // move to separate handler files and do userEvents = require('./user/eventHandlers.js')
   // userEvents.addHandlers()
   // User auth
@@ -23,13 +25,11 @@ $(() => {
 
   $('#show-user-forums').on('click', forumEvents.onShowUserForums)
   $('#create-forum').on('submit', forumEvents.onCreateForum)
-  $('#edit-forum').on('submit', forumEvents.onEditForum)
-  $('#delete-forum').on('submit', forumEvents.onDeleteForum)
 
   $('#all-forums-list').on('click', '.forum-item', forumEvents.onForumItem)
+  $('#all-forums-list').on('submit', '.edit-forum', forumEvents.onEditForum)
+  $('#all-forums-list').on('click', '.delete-forum', forumEvents.onDeleteForum)
 
   // Post CRUD
   $('#create-post').on('submit', postEvents.onCreatePost)
-  $('#edit-post').on('submit', postEvents.onEditPost)
-  $('#delete-post').on('click', postEvents.onDeletePost)
 })

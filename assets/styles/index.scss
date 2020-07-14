@@ -51,17 +51,3 @@ textarea {
   margin: 10px;
   width: 95%;
 }
-
-// For local fonts, put the files in `public`, and then import and use them in a
-// `.scss` file like this:
-//
-// ```scss
-// @font-face {
-//   font-family: 'Nature Beauty';
-//   src: url('public/Nature-Beauty.ttf') format('truetype');
-// }
-//
-// .element-with-custom-font {
-//   font-family: 'Nature Beauty';
-// }
-// ```

@@ -2,6 +2,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const view = require('./../view.js')
 const store = require('./../store.js')
+const forumEvents = require('./../forum/events.js')
 const getFormFields = require('./../../../lib/get-form-fields.js')
 
 const handleForm = function (event) {
@@ -16,6 +17,8 @@ const onSignUp = function (event) {
     .then(user => store.setUser(user))
     .then(ui.displayMessage)
     .then(view.showLoggedInView)
+    .then(() => { if (store.currentForum) { view.showPostCrudView() } })
+    .then(forumEvents.showAllForums)
     .catch(console.error)
 }
 
@@ -30,6 +33,8 @@ const onLogIn = function (event) {
     // .then(store.setUser)
     .then(ui.displayMessage)
     .then(view.showLoggedInView)
+    .then(() => { if (store.currentForum) { view.showPostCrudView() } })
+    .then(forumEvents.showAllForums)
     .catch(console.error)
 }
 
@@ -40,6 +45,8 @@ const onLogOut = function (event) {
     .then(a => store.unsetUser(a))
     .then(ui.displayMessage)
     .then(view.showLoggedOutView)
+    .then(view.hidePostCrudView)
+    .then(forumEvents.showAllForums)
     .catch(console.error)
 }
 
@@ -56,6 +63,8 @@ const onDeleteAccount = function (event) {
     .then(store.unsetUser)
     .then(ui.displayMessage)
     .then(view.showLoggedOutView)
+    .then(view.hidePostCrudView)
+    .then(forumEvents.showAllForums)
     .catch(console.error)
 }
 

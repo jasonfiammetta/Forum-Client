@@ -5,10 +5,9 @@ const forumListTemplate = require('./../templates/forum-list.handlebars')
 const $postMessage = $('#post-message')
 const $postArea = $('#main-forum')
 const postTemplate = require('./../templates/post-template.handlebars')
-const store = require('./../store.js')
 
 const selectForum = function (title) {
-  $postMessage.text('Selected Forum: ' + title)
+  title ? $postMessage.text('Selected Forum: ' + title) : $postMessage.text('No Selected Forum')
 }
 
 const createForum = function (title) {
@@ -22,7 +21,7 @@ const createForum = function (title) {
 const showForums = function (response) {
   // console.log('show forums', response)
   // if (response.forums.length > 0) {
-  $forumList.html(forumListTemplate({ forums: response.forums }))
+  $forumList.html(forumListTemplate({ forums: response.forums.reverse() }))
   // } else { // can probably do this in handlebars too
   //   $forumList.html('<li class="list-group-item disabled">No forums yet.</li>')
   // }
@@ -37,6 +36,12 @@ const showForum = function (forumResponse) {
     $postArea.html('<li class="list-group-item disabled">No posts in this forum yet.</li>')
   }
   // $postArea.html(multiPostTemplate(forumResponse.forum.posts))
+}
+
+const deleteForum = function () {
+  $allForms.trigger('reset')
+  $postArea.html('')
+  selectForum(null)
 }
 
 // handlebars
@@ -54,6 +59,6 @@ module.exports = {
   showForums,
   showForum,
   // editForum, // ?
-  // deleteForum, // ?
+  deleteForum,
   noTokenFail
 }

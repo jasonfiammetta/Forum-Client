@@ -1,4 +1,4 @@
-
+// const forumEvents = require('./forum/events.js')
 const loggedOutView = {
   // elements: [$('#sign-up'), $('#log-in')],
   elements: [$('.logged-out-view')],
@@ -14,7 +14,7 @@ const loggedOutView = {
 
 const loggedInView = {
   // elements: [$('#change-password'), $('#log-out'), $('delete-account')],
-  elements: [$('.logged-in-view')],
+  elements: [$('.logged-in-view'), $('.forum-crud-view')],
   hide: function () {
     this.elements.forEach(e => e.hide())
   },
@@ -24,9 +24,10 @@ const loggedInView = {
   }
 }
 
-const forumCrud = {
+const postCrud = {
   // elements: [$('#create-forum'), $('#edit-forum'), $('#delete-forum')],
-  elements: [$('.forum-crud-view'), $('.post-crud-view')],
+  // elements: [$('.forum-crud-view'), $('.post-crud-view')], // Move forum-crud-view to loggedInView
+  elements: [$('.post-crud-view')],
   hide: function () {
     this.elements.forEach(e => e.hide())
   },
@@ -37,17 +38,27 @@ const forumCrud = {
 
 const showLoggedOutView = function () {
   loggedInView.hide()
-  forumCrud.hide()
+  // forumCrud.hide()
   loggedOutView.show()
 }
 
 const showLoggedInView = function () {
   loggedOutView.hide()
   loggedInView.show()
-  forumCrud.show()
+  // forumCrud.show()
+}
+
+const showPostCrudView = function () {
+  postCrud.show()
+}
+
+const hidePostCrudView = function () {
+  postCrud.hide()
 }
 
 module.exports = {
   showLoggedInView,
-  showLoggedOutView
+  showLoggedOutView,
+  showPostCrudView,
+  hidePostCrudView
 }

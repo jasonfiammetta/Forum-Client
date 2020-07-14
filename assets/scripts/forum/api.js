@@ -19,15 +19,15 @@ const getOneForum = function (id) {
     .callAjax()
 }
 
-const editForum = function (data) {
-  return api.createCall('PATCH', '/forums' + data.forumID)
+const editForum = function (data, id) {
+  return api.createCall('PATCH', '/forums/' + id)
     .addHeader(store.getToken())
     .addBody(data)
     .callAjax()
 }
 
-const deleteForum = function (data) {
-  return api.createCall('DELETE', '/forums' + data.forumID)
+const deleteForum = function (id) {
+  return api.createCall('DELETE', '/forums/' + id)
     .addHeader(store.getToken())
     .callAjax()
 }

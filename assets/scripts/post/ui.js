@@ -1,6 +1,6 @@
-const $postArea = $('#main-forum') // confusing name
+// const $postArea = $('#main-forum') // confusing name
 const $allForms = $('form')
-const postTemplate = require('./../templates/post-template.handlebars')
+// const postTemplate = require('./../templates/post-template.handlebars')
 const forumEvents = require('./../forum/events.js')
 // const $postMessage = $('#post-message')
 

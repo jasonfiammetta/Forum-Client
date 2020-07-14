@@ -1,3 +1,5 @@
+// const view = require('./view.js') // Probably shouldn't use this here
+
 const store = {
   user: null,
   loggedIn: false,
@@ -27,6 +29,7 @@ const store = {
   currentForum: null,
   setForum: function (forumID) {
     this.currentForum = forumID
+    // this.currentForum ? view.showSelectedForumView() : view.showNoSelectedForumView()
   },
   getForum: function () {
     return this.currentForum

@@ -1,20 +1,19 @@
-<!-- $forumList.html('')
-response.forums.forEach(forum => {
-  // console.log('append this', forum)
-  $forumList.append(
-    `<li class="forum-item" data-forum-id="${forum._id}" data-forum-name="${forum.title}">
-      <p>Forum: ${forum.title}, Posted by ${forum.owner ? forum.owner.email : 'Deleted User'}</p>
-    </li>`
-  )
-}) -->
 {{#each forums as |forum|}}
-  <!-- <li class="forum-item list-group-item d-flex justify-content-between align-items-center" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}"> -->
-  <li class="forum-item list-group-item rounded-bottom" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}">
-    <p class="forum-title">Forum: {{forum.title}}, Posted by {{#if forum.owner}}
+  <li class="forum-item list-group-item rounded-bottom d-flex" data-forum-id="{{forum._id}}" data-forum-name="{{forum.title}}">
+    <p class="forum-title mr-auto">Forum: {{forum.title}}, Posted by {{#if forum.owner}}
         {{forum.owner.email}}
-        <!-- {{#if (isAuthorOf forum.owner.email)}}
-          Owns this<button type="button" class="btn btn-sm btn-danger">Delete Forum</button>
-        {{/if}} -->
+        {{#if (isAuthorOf forum.owner.email)}}
+          <div>
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="collapse" data-target="#edit-forum-collapse-{{forum._id}}">Edit Forum</button>
+            <button type="button" class="delete-forum btn btn-sm btn-danger">Delete Forum</button>
+          </div>
+          <div class="collapse" id="edit-forum-collapse-{{forum._id}}">
+            <form class="edit-forum" id="edit-{{forum._id}}">
+              <input type="text" name="forum[title]" required placeholder="New Forum Title">
+              <button type="submit" class="btn btn-primary">Edit Forum</button>
+            </form>
+          </div>
+        {{/if}}
       {{else}}
         Deleted User
       {{/if}}</p>
