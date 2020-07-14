@@ -12,19 +12,12 @@ const getFormFields = require('./../../../lib/get-form-fields.js')
 const onCreateForum = function (event) {
   event.preventDefault()
 
-  if (!store.getToken()) {
-    console.log('No token found')
-    ui.noTokenFail()
-    return
-  }
-
   const data = getFormFields(event.target)
   data.forum.owner = store.getToken()
-  console.log('create forum data', data)
+  // console.log('create forum data', data)
   // controller.createForum(data)
   api.createForum(data)
     .then(response => {
-      console.log(response)
       store.setForum(response.forum._id)
       if (store.loggedIn) { view.showPostCrudView() }
       return response.forum.title
@@ -32,7 +25,7 @@ const onCreateForum = function (event) {
     .then(ui.createForum)
     .then(showAllForums)
     .then(showOneForum)
-    .catch(console.error)
+    .catch(() => ui.failed('Could not create forum'))
 }
 
 const onShowAllForums = function (event) {
@@ -44,56 +37,57 @@ const onShowAllForums = function (event) {
 const showAllForums = function () {
   api.getForums()
     .then(ui.showForums)
-    .catch(console.error)
+    .catch(() => ui.failed('Could not show forums'))
 }
 
 const onShowUserForums = function (event) {
   event.preventDefault()
   api.getOneForum(store.getForum())
     .then(ui.showForum)
-    .catch(console.error)
+    .catch(() => ui.failed('Could not show forum'))
 }
 
 const onEditForum = function (event) {
   event.preventDefault()
   event.stopPropagation()
 
-  if (!store.getToken()) {
-    console.log('No token found')
-    // ui.(noTokenFail)
-    return
-  }
-  const data = getFormFields(event)
-  console.log('edit forum data', data)
-  api.editForum(data)
-    .then(ui.showForums)
+  const data = getFormFields(event.target)
+  // console.log('edit forum data', data)
+  api.editForum(data, event.target.id)
+    .then(response => {
+      // console.log('edit', response)
+      // ui.editForum(response.title)
+    })
     .then(showAllForums)
-    .catch(console.error)
+    .then(showOneForum)
+    .catch(() => ui.failed('Could not edit forum'))
 }
 
 const onDeleteForum = function (event) {
   event.preventDefault()
   event.stopPropagation()
 
-  if (!store.getToken()) {
-    console.log('No token found')
-    // ui.(noTokenFail)
-    return
-  }
-  console.log(event.target)
-  api.deleteForum(store.getForum()) // NOPE don't delete current forum, delete forum with button
+  // console.log('delete', event.target.id)
+  api.deleteForum(event.target.id)
     .then(showAllForums)
     .then(() => {
       store.setForum(null)
       view.hidePostCrudView()
     })
     .then(ui.deleteForum)
-    .catch(console.error)
+    .catch(() => {
+      store.setForum(null)
+      view.hidePostCrudView()
+      showAllForums()
+      ui.deleteForum()
+      ui.failed('Could not delete forum')
+    })
 }
 
 const onForumItem = function (event) {
   event.preventDefault()
 
+  // console.log('forum item', event)
   const id = $(event.currentTarget).data('forum-id')
   // console.log('Forum clicked, currentTarget ID: ', id)
   const name = $(event.currentTarget).data('forum-name')
@@ -102,13 +96,13 @@ const onForumItem = function (event) {
   if (store.loggedIn) { view.showPostCrudView() }
   api.getOneForum(store.getForum())
     .then(ui.showForum)
-    .catch(console.error)
+    .catch(() => ui.failed('Could not show forum'))
 }
 
 const showOneForum = function () {
   api.getOneForum(store.getForum())
     .then(ui.showForum)
-    .catch(console.error)
+    .catch(() => ui.failed('Could not show forum'))
 }
 
 module.exports = {

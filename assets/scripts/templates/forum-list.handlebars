@@ -4,15 +4,15 @@
         {{forum.owner.email}}
         {{#if (isAuthorOf forum.owner.email)}}
           <div>
-            <button type="button" class="btn btn-sm btn-primary" data-toggle="collapse" data-target="#edit-forum-collapse-{{forum._id}}">Edit Forum</button>
-            <button type="button" class="delete-forum btn btn-sm btn-danger">Delete Forum</button>
+            <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="collapse" data-target="#edit-forum-collapse-{{forum._id}}">Edit Forum</button> -->
+            <button id="{{forum._id}}" type="button" class="delete-forum btn btn-sm btn-danger">Delete Forum</button>
           </div>
-          <div class="collapse" id="edit-forum-collapse-{{forum._id}}">
-            <form class="edit-forum" id="edit-{{forum._id}}">
+        </li>
+        <li class="list-group-item rounded-bottom d-flex collapse collapse-auth" id="edit-forum-collapse-{{forum._id}}">
+            <form class="edit-forum" id="{{forum._id}}">
               <input type="text" name="forum[title]" required placeholder="New Forum Title">
               <button type="submit" class="btn btn-primary">Edit Forum</button>
             </form>
-          </div>
         {{/if}}
       {{else}}
         Deleted User

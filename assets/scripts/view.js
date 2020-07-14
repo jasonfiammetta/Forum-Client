@@ -6,8 +6,6 @@ const loggedOutView = {
     this.elements.forEach(e => e.hide())
   },
   show: function () {
-    // loggedInView.hide()
-    // forumCrud.hide()
     this.elements.forEach(e => e.show())
   }
 }
@@ -38,8 +36,8 @@ const postCrud = {
 
 const showLoggedOutView = function () {
   loggedInView.hide()
-  // forumCrud.hide()
   loggedOutView.show()
+  // forumCrud.hide()
 }
 
 const showLoggedInView = function () {

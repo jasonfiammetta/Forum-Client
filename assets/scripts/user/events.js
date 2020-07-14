@@ -14,12 +14,12 @@ const onSignUp = function (event) {
   api.signUp(handleForm(event))
   // .then(controller.handleSignUp)
     // .then(store.setUser)
-    .then(user => store.setUser(user))
+    .then(user => { console.log('storing user'); store.setUser(user) })
     .then(ui.displayMessage)
     .then(view.showLoggedInView)
     .then(() => { if (store.currentForum) { view.showPostCrudView() } })
     .then(forumEvents.showAllForums)
-    .catch(console.error)
+    .catch(ui.failed('Invalid credentials'))
 }
 
 // .then(store.setUser) Doesn't work for some reason,
@@ -35,7 +35,7 @@ const onLogIn = function (event) {
     .then(view.showLoggedInView)
     .then(() => { if (store.currentForum) { view.showPostCrudView() } })
     .then(forumEvents.showAllForums)
-    .catch(console.error)
+    .catch(ui.failed('Invalid credentials'))
 }
 
 const onLogOut = function (event) {
@@ -47,14 +47,14 @@ const onLogOut = function (event) {
     .then(view.showLoggedOutView)
     .then(view.hidePostCrudView)
     .then(forumEvents.showAllForums)
-    .catch(console.error)
+    .catch(ui.failed('Could not log out'))
 }
 
 const onChangePassword = function (event) {
   api.changePassword(handleForm(event))
   // .then(controller.handleChangePassword)
     .then(ui.clearForums)
-    .catch(console.error)
+    .catch(ui.failed('Invalid credentials'))
 }
 
 const onDeleteAccount = function (event) {
@@ -65,7 +65,7 @@ const onDeleteAccount = function (event) {
     .then(view.showLoggedOutView)
     .then(view.hidePostCrudView)
     .then(forumEvents.showAllForums)
-    .catch(console.error)
+    .catch(ui.failed('Invalid credentials'))
 }
 
 module.exports = {

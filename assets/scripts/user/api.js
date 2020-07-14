@@ -8,7 +8,6 @@ const signUp = function (data) {
 }
 
 const logIn = function (data) {
-  console.log(data)
   return api.createCall('POST', '/log-in')
     .addBody(data)
     .callAjax()
@@ -28,7 +27,7 @@ const changePassword = function (data) {
 }
 
 const deleteAccount = function (data) {
-  console.log('Deleting account')
+  // console.log('Deleting account')
   return api.createCall('DELETE', '/delete-account')
     .addHeader(store.getToken())
     .callAjax()

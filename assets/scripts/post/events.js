@@ -8,10 +8,10 @@ const onCreatePost = function (event) {
   const data = getFormFields(event.target)
   // data.post.author = store.getToken()
   data.post.forum = store.getForum()
-  console.log(data)
+  // console.log(data)
   api.createPost(data)
     .then(ui.showPost)
-    .catch(console.error)
+    .catch(() => {})
 }
 
 const onEditPost = function () {

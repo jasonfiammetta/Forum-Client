@@ -21,7 +21,7 @@
           <li class="nav-item">
             <button class="btn btn-sm btn-secondary" type="button" data-toggle="collapse" data-target="#sign-up-collapse">User Sign Up</button>
           </li>
-          <li class="collapse nav-item" id="sign-up-collapse">
+          <li class="collapse collapse-auth nav-item" id="sign-up-collapse">
             <form id="sign-up">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
@@ -32,7 +32,7 @@
           <li class="nav-item">
             <button class="btn btn-sm btn-secondary" type="button" data-toggle="collapse" data-target="#log-in-collapse">User Log In</button>
           </li>
-          <li class="collapse nav-item" id="log-in-collapse">
+          <li class="collapse collapse-auth nav-item" id="log-in-collapse">
             <form id="log-in">
               <input type="email" name="credentials[email]" required placeholder="Email">
               <input type="password" name="credentials[password]" required placeholder="Password">
@@ -54,7 +54,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <div class="collapse" id="change-password-collapse">
+            <div class="collapse collapse-auth" id="change-password-collapse">
               <form id="change-password">
                 <input type="password" name="passwords[old]" required placeholder="Old Password">
                 <input type="password" name="passwords[new]" required placeholder="New Password">
@@ -63,7 +63,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <div class="collapse" id="delete-account-collapse">
+            <div class="collapse collapse-auth" id="delete-account-collapse">
               <p>Are you sure you want to delete your account? This action is permanent.</p>
               <button id="delete-account" type="button" class="btn btn-danger">Delete Account</button>
             </div>
